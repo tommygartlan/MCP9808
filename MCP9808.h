@@ -23,7 +23,11 @@
 #define REG_RESOLUTION  0x08
 
 // Function Prototypes
-void MCP9808_Init(void);
+/**
+ * @brief Checks for MCP9808 presence on the I2C bus.
+ */
+bool MCP9808_Init(void);
+
 float MCP9808_ReadTemp(void);
 uint16_t MCP9808_GetManufID(void);
 void MCP9808_SetResolution(uint8_t resolution);

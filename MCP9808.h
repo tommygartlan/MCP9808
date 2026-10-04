@@ -8,6 +8,7 @@
 
 //#include "mcc_generated_files/system/system.h"
 #include <xc.h>
+#include <stdbool.h>
 // I2C Address (User specified: 0x1C)
 #define MCP9808_ADDR 0x1C 
 

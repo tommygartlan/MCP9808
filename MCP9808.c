@@ -2,8 +2,6 @@
  * implementation based on Datasheet DS20005095B Appendix A 
  */
 
-#include <stdbool.h>  //updated 4th Oct-2026
-
 #include "MCP9808.h"
 //#include "I2C_Func_Simple_v2.h"
 #include "../Curioisty_I2C_Library-main/I2C_Func_Simple_v2.h"

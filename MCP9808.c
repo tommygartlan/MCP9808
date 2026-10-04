@@ -2,6 +2,8 @@
  * implementation based on Datasheet DS20005095B Appendix A 
  */
 
+#include <stdbool.h>  //updated 4th Oct-2026
+
 #include "MCP9808.h"
 //#include "I2C_Func_Simple_v2.h"
 #include "../Curioisty_I2C_Library-main/I2C_Func_Simple_v2.h"
@@ -33,11 +35,11 @@ float MCP9808_ReadTemp(void) {
     // Convert the temperature data (Logic from Example 5-1)
     UpperByte = UpperByte & 0x1F;   // Clear flag bits [cite: 598]
     
-    if ((UpperByte & 0x10) == 0x10) { // TA < 0°C [cite: 599]
+    if ((UpperByte & 0x10) == 0x10) { // TA < 0Â°C [cite: 599]
         UpperByte = UpperByte & 0x0F; // Clear SIGN
         Temperature = 256.0 - ((float)UpperByte * 16.0 + (float)LowerByte / 16.0);
         Temperature = Temperature * -1; // Make negative (implied by eq)
-    } else {                          // TA >= 0°C [cite: 600]
+    } else {                          // TA >= 0Â°C [cite: 600]
         Temperature = ((float)UpperByte * 16.0 + (float)LowerByte / 16.0);
     }
     

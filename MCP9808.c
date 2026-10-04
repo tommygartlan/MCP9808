@@ -10,9 +10,26 @@
 // MCP9808 Application Functions
 // ==========================================
 
-//void MCP9808_Init(void) {
- //   i2c_init();
-//}
+/**
+ * @brief  Initializes and checks presence of the MCP9808 temperature sensor on the I2C bus.
+ * @return bool - true if device acknowledged (ACK), false if device failed to respond (NACK).
+ */
+bool MCP9808_Init(void) {
+    bool device_acknowledged = false;
+
+    // 1. Generate I2C START condition
+    i2c_start();
+
+    // 2. Transmit 7-bit slave address + Write bit (0)
+    // i2c_write returns true on ACK (ACKSTAT == 0) or false on NACK (ACKSTAT == 1)
+    device_acknowledged = i2c_write((unsigned char)((MCP9808_ADDR << 1) | 0x00));
+
+    // 3. Generate I2C STOP condition to free the bus
+    i2c_stop();
+
+    // 4. Return presence verification status
+    return device_acknowledged;
+}
 
 // Logic from "Example 5-1: Sample Instruction Code" 
 float MCP9808_ReadTemp(void) {

@@ -26,7 +26,7 @@
 /**
  * @brief Checks for MCP9808 presence on the I2C bus.
  */
-bool MCP9808_Init(void);
+bool MCP9808_Acknowledge(void);
 
 float MCP9808_ReadTemp(void);
 uint16_t MCP9808_GetManufID(void);

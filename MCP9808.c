@@ -14,7 +14,7 @@
  * @brief  Initializes and checks presence of the MCP9808 temperature sensor on the I2C bus.
  * @return bool - true if device acknowledged (ACK), false if device failed to respond (NACK).
  */
-bool MCP9808_Init(void) {
+bool MCP9808_Acknowledge(void) {
     bool device_acknowledged = false;
 
     // 1. Generate I2C START condition
